@@ -5,7 +5,7 @@ const userInput = $('.userinput');
 const DayURL = "https://api.openweathermap.org/data/2.5/weather?q=" + userInput.val() + "&Appid=" + myApiKey + "&units=imperial";
 const FiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + userInput.val() + "&ppid=" + myApiKey + "&units=imperial";
 var keyCount = 0;
-
+const theCityName = $('.city-group').addClass('cityListGroup');
 
 search.on('click', function () {
 
@@ -20,7 +20,9 @@ if (!typedSearch == "") {
     })
     .then(function (data) {
         console.log(data);
-        const 
+        theCityName.append('<li>' + data.name + "<li>");
+        const storage = localStorage.setItem(keyCount, data.name);
+        keyCount = keyCount + 1
     });
 }
 
