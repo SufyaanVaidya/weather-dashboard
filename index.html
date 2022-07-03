@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+    <header>
+        <h1 class="header" style="background-color: lightblue; text-align: center; font-size: 100px;">Weather Dashboard</h1>
+    </header>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col">
+
+                <div class="card-body text-center">
+
+                <div class="card" style="width: 18rem;">
+
+            <div class="card-body bg-light">
+            <h6 class="card-subtitle mb-2 text-muted">Search Your City</h6>
+            <div class="input-group mb-3">
+            <input type="text" class="form-control userInput" placeholder="-Name Of City">
+            <div class="input-group-append">
+            <button class="btn btn-outline-secondary bg-primary searchButton" style="color: white;" type="button"
+                id="button">Search</button>
+            </div>
+            </div>
+
+            <ul class="city-group"></ul>
+
+            </div>
+                </div>
+                </div>
+            </div>
+         
+            <div class="col mt-4 mr-5">
+                <div class="card currentCard pb-2 pt-1">
+                    <h5 class="card-title mt-2 text-center">Your Current Forecast</h5>
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col mt-4">
+                        <div class="card pb-5 fiveDayCard pl-5">
+                      
+                        <h5 class="card-title mt-2 mr-5">Your 5-Day Forecast </h5>
+                        <div class="row">
+                            <div class="col fiveDayOne">
+                            </div>
+
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/javascript.js"></script>
+</body>
+</html>
