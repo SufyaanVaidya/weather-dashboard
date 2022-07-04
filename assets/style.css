@@ -8,3 +8,11 @@ li {
     list-style: none;
     border: 1px solid black;
 }
+
+.forecastcolor {
+    padding: 30px;
+    background-color: darkcyan;
+    color: white;
+    margin: 15px;
+    border: 1.5px solid black;
+}
