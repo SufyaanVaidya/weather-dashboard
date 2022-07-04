@@ -16,3 +16,8 @@ li {
     margin: 15px;
     border: 1.5px solid black;
 }
+
+img {
+    height: 100px;
+    width: 100px;
+}
