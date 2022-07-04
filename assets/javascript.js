@@ -27,46 +27,26 @@ if (!typedSearch == "") {
         keyCount = keyCount + 1;
         currentWeather.empty();
         currentWeather.append(chosenName);
-
         const time = new Date(data.dt * 1000);
         chosenName.append(data.name + ' ' + time.toLocaleDateString('en-US'));
         chosenName.append(`<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">`);
         chosenName.append(temprature);
         temprature.append('<p>' + 'Temp- ' + data.main.temp + '<p>');
-
+        temprature.append('<p>' + 'Humitdity- ' + data.main.humidity + '%' + '<p>');
+        temprature.append('<p>' + 'Wind Speeds- ' + data.wind.speed + '<p>');
+        const uvIndex = 'https://api.openweathermap.org/data/3.0/onecall?lat=' + data.lat + '&lon=' + data.lon + '&exclude={part}&appid=' + myApiKey;
+        fetch(uvIndex)
+        .then(function (response) {
+            return response.json;
+        })
+        .then (function (data) {
+            
+        })
     });
 }
 
 
 
-
-// i need a way to add it to the searched list
-
-
-
-
-
-
-
-
-// i need a way to display the current forecast
-
-
-
-
-
-
-
-
-// i need a function that shows the 5 day forecast
-
-
-
-
-
-
-
-// i need a function that displays the uv indext on all the items
 
 
 
