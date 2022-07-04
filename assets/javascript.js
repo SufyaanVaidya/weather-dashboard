@@ -13,12 +13,11 @@ var keyCount = 0;
 
 
 
-search.on('click', function () {
+function weatherInfo() {
 const typedSearch = userInput.val();
 const DayURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + typedSearch + '&Appid=' + myApiKey + '&units=imperial';
 const FiveDay = 'https://api.openweathermap.org/data/2.5/forecast?q=' + typedSearch + '&Appid=' + myApiKey + '&units=imperial';
 if (!typedSearch == '') {
-    console.log(typedSearch);
     fetch(DayURL)
     .then(function (response) {
         return response.json();
@@ -66,4 +65,6 @@ if (!typedSearch == '') {
 }
 
 
-});
+};
+
+search.on('click', weatherInfo);
