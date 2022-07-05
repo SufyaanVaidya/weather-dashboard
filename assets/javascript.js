@@ -17,11 +17,11 @@ function listClicks(e) {
     e.preventDefault();
     console.log(e.target.innerHTML);
     userInput.val(e.target.innerHTML);
+    weatherInfo(userInput.val);
 }
 
 
 function weatherInfo() {
-    console.log(historyCity)
     typedSearch = userInput.val();
 const DayURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + typedSearch + '&Appid=' + myApiKey + '&units=imperial';
 const FiveDay = 'https://api.openweathermap.org/data/2.5/forecast?q=' + typedSearch + '&Appid=' + myApiKey + '&units=imperial';
