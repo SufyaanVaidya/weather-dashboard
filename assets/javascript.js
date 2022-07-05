@@ -9,7 +9,7 @@ const chosenName = currentWeather.append('<p>');
 const temprature = chosenName.append('<p>');
 const fiveForecastArea = $('.fiveforecastarea').addClass('forecast-body');
 const fiveDayForecast = $('.fivedayforecast').addClass('forecast-text');
-const days = [1, 2, 3, 4, 5];
+const days = [0, 1, 2, 3, 4];
 var keyCount = 0;
 var historyCity;
 
@@ -51,9 +51,19 @@ if (!typedSearch == '') {
             
         })
         .then(function (data) {
-            const cityUv = temprature.append('<p>' + 'UVI- ' + data.current.uvi + '</p>').addClass('cardText');
+            const cityUv = temprature.append('<p id= "cardText">' + 'UVI- ' + data.current.uvi + '</p>').addClass('cardText');
             cityUv.addClass('ultraViolet');
             temprature.append(cityUv);
+            const uvColor = $('#cardText');
+            if (data.current.uvi <= 2) {
+                uvColor.addClass('gooduv')
+            }
+            if (data.current.uvi >= 3 && data.current.uvi <= 7) {
+                uvColor.addClass('decentuv')
+            }
+            if (data.current.uvi > 8) {
+                uvColor.addClass('baduv')
+            }
         })
        
     });

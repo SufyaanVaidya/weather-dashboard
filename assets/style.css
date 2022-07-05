@@ -21,3 +21,15 @@ img {
     height: 100px;
     width: 100px;
 }
+
+.gooduv {
+    background-color: green;
+}
+
+.decentuv {
+    background-color: yellow;
+}
+
+.baduv {
+    background-color: purple;
+}
