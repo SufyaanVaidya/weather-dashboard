@@ -2,6 +2,7 @@
 const search = $('.searchbutton');
 const myApiKey = '34c3e6b2f1df4ec6c700399d6355c7df';
 const userInput = $('.userinput');
+var typedSearch;
 const theCityName = $('.city-group').addClass('cityListGroup');
 const currentWeather = $('.todayforecast').append('<div>').addClass('card-body');
 const chosenName = currentWeather.append('<p>');
@@ -10,11 +11,18 @@ const fiveForecastArea = $('.fiveforecastarea').addClass('forecast-body');
 const fiveDayForecast = $('.fivedayforecast').addClass('forecast-text');
 const days = [1, 2, 3, 4, 5];
 var keyCount = 0;
+var historyCity;
 
+function listClicks(e) {
+    e.preventDefault();
+    console.log(e.target.innerHTML);
+    userInput.val(e.target.innerHTML);
+}
 
 
 function weatherInfo() {
-const typedSearch = userInput.val();
+    console.log(historyCity)
+    typedSearch = userInput.val();
 const DayURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + typedSearch + '&Appid=' + myApiKey + '&units=imperial';
 const FiveDay = 'https://api.openweathermap.org/data/2.5/forecast?q=' + typedSearch + '&Appid=' + myApiKey + '&units=imperial';
 if (!typedSearch == '') {
@@ -23,7 +31,8 @@ if (!typedSearch == '') {
         return response.json();
     })
     .then(function (data) {
-        theCityName.append('<li>' + data.name + '</li>');
+        var li = $('<li>').attr('id', data.name).text(data.name).on('click',listClicks);
+        li.appendTo(theCityName);
         const storage = localStorage.setItem(keyCount, data.name);
         keyCount = keyCount + 1;
         currentWeather.empty();
@@ -67,4 +76,9 @@ if (!typedSearch == '') {
 
 };
 
-search.on('click', weatherInfo);
+
+
+search.on('click', function () {
+    weatherInfo()
+    userInput.val('');
+});
