@@ -4,11 +4,12 @@
 
 
 
+/* this is to style the elements created in the js file */
 li {
     list-style: none;
     border: 1px solid black;
 }
-
+/* this is for the background of the 5 day forecasts */
 .forecastcolor {
     padding: 30px;
     background-color: darkcyan;
@@ -16,20 +17,20 @@ li {
     margin: 15px;
     border: 1.5px solid black;
 }
-
+/* this is sizing the weather image */
 img {
     height: 100px;
     width: 100px;
 }
-
+/* this is the color for good uv index*/
 .gooduv {
     background-color: green;
 }
-
+/* this is the color for moderate uv index*/
 .decentuv {
     background-color: yellow;
 }
-
+/* this is the color for bad uv index*/
 .baduv {
     background-color: purple;
 }

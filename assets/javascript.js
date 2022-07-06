@@ -1,4 +1,4 @@
-// i need my variables
+// these are all my variables that target the html and css
 const search = $('.searchbutton');
 const myApiKey = '34c3e6b2f1df4ec6c700399d6355c7df';
 const userInput = $('.userinput');
@@ -13,23 +13,26 @@ const days = [0, 1, 2, 3, 4];
 var keyCount = 0;
 var historyCity;
 
+// this function is for what happens when the list items are clicked.
 function listClicks(e) {
     e.preventDefault();
-    console.log(e.target.innerHTML);
     userInput.val(e.target.innerHTML);
     weatherInfo(userInput.val);
 }
 
-
+// this function is generating the weather input
 function weatherInfo() {
     typedSearch = userInput.val();
+    // these variables are to target certain data from an api using the users input
 const DayURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + typedSearch + '&Appid=' + myApiKey + '&units=imperial';
 const FiveDay = 'https://api.openweathermap.org/data/2.5/forecast?q=' + typedSearch + '&Appid=' + myApiKey + '&units=imperial';
 if (!typedSearch == '') {
+    // this is calling on the api
     fetch(DayURL)
     .then(function (response) {
         return response.json();
     })
+    // this is applying the data returned to the html page and creating elements
     .then(function (data) {
         var li = $('<li>').attr('id', data.name).text(data.name).on('click',listClicks);
         li.appendTo(theCityName);
@@ -50,6 +53,7 @@ if (!typedSearch == '') {
             return response.json();
             
         })
+        // this is adding the uvi to the temp card and color coding it based on the index
         .then(function (data) {
             const cityUv = temprature.append('<p id= "cardText">' + 'UVI- ' + data.current.uvi + '</p>').addClass('cardText');
             cityUv.addClass('ultraViolet');
@@ -68,13 +72,12 @@ if (!typedSearch == '') {
        
     });
 
-
+    // this is getting information about the 5 day forecast of that area
     fetch (FiveDay)
     .then(function (response) {
         return response.json();
     })
     .then(function (data) {
-        console.log(data);
         fiveDayForecast.empty();
         days.forEach(function (i) {
             const fiveDayTime = moment().add(i + 1, 'days').format('MM/DD/YYYY');
@@ -87,7 +90,7 @@ if (!typedSearch == '') {
 };
 
 
-
+// this is an onclick for the search button and what should happen when its clicked
 search.on('click', function () {
     weatherInfo()
     userInput.val('');
